@@ -1,0 +1,16 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'ASG with required tags for Cluster Autoscaler'
+Resources:
+  EKSNodeGroup:
+    Type: AWS::AutoScaling::AutoScalingGroup
+    Properties:
+      MinSize: "1"
+      MaxSize: "5"
+      DesiredCapacity: "1"
+      Tags:
+        - Key: "k8s.io/cluster-autoscaler/enabled"
+          Value: "true"
+          PropagateAtLaunch: true
+        - Key: "k8s.io/cluster-autoscaler/my-cluster"
+          Value: "owned"
+          PropagateAtLaunch: true
