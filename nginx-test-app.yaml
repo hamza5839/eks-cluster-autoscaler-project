@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-stress
+spec:
+  replicas: 20
+  template:
+    metadata:
+      labels:
+        app: nginx-stress
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        resources:
+          requests:
+            cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-stress-svc
+spec:
+  selector:
+    app: nginx-stress
+  ports:
+    - port: 80
+  type: LoadBalancer
