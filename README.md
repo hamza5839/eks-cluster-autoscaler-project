@@ -157,7 +157,7 @@ kubectl scale deployment nginx --replicas=20
 
 ## 👨‍💻 Author
 
-Muhammad Hamza
+Muhammad Hamza gpt
 
 ---
 
